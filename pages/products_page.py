@@ -69,7 +69,7 @@ class ProductsPage(BasePage):
 
 
     def sorted_prices_from_low_to_high(self):
-        self.sort(self.SORT_FROM_LOW_TO_HIGHT)
+        self.sort(self.SORT_FROM_LOW_TO_HIGH)
         return self.get_all_card_prices()
 
 
