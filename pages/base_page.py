@@ -19,3 +19,7 @@ class BasePage:
 
     def find_in_element(self, element, locator):
         return element.find_element(*locator)
+
+
+    def get_page_title(self):
+        return self.driver.title

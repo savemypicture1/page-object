@@ -26,3 +26,7 @@ class LoginPage(BasePage):
 
     def find_error_msg(self):
         return self.find(self.ERROR_MSG)
+
+
+    def is_login_button_visible(self):
+        return self.find(self.LOGIN_BUTTON).is_displayed()
