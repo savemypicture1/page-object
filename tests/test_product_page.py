@@ -7,10 +7,9 @@ def test_back_to_products_button(driver, logged_in):
     products = ProductsPage(driver)
     product_page.open_product_page(0)
     product_page.click_on_back_products_button()
+    result = products.get_page_title_text()
 
-    result = products.get_page_title()
-
-    assert result.is_displayed()
+    assert result in "Products"
 
 
 def test_product_button(driver, logged_in):

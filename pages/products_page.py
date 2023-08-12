@@ -23,8 +23,8 @@ class ProductsPage(BasePage):
     REMOVE_BUTTON = (By.CSS_SELECTOR, ".btn_secondary")
 
 
-    def get_page_title(self):
-        return self.find(self.TITLE_PAGE)
+    def get_page_title_text(self):
+        return self.find(self.TITLE_PAGE).text
 
 
     def get_all_card_titles(self):

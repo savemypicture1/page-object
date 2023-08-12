@@ -1,6 +1,8 @@
 import pytest
 from selenium import webdriver
+from pages.cart_page import Cart
 from pages.login_page import LoginPage
+from pages.products_page import ProductsPage
 from pages.sidebar import Sidebar
 
 
@@ -26,3 +28,12 @@ def logged_in(driver):
 def with_open_sidebar(driver):
     sidebar = Sidebar(driver)
     sidebar.click_on_burger_menu()
+
+
+@pytest.fixture
+def with_product_in_cart(driver):
+    products_page = ProductsPage(driver)
+    cart = Cart(driver)
+    products_page.click_on_add_to_cart_button(0)
+    cart.click_on_cart_icon()
+    return cart

@@ -21,5 +21,5 @@ class BasePage:
         return element.find_element(*locator)
 
 
-    def get_page_title(self):
+    def get_page_meta_title(self):
         return self.driver.title
