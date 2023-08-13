@@ -6,6 +6,7 @@ class LoginPage(BasePage):
     USER_NAME = (By.CSS_SELECTOR, "#user-name")
     PASSWORD = (By.CSS_SELECTOR, "#password")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "#login-button")
+
     ERROR_MSG = (By.CSS_SELECTOR, "h3")
     ERROR_MSGS = {"invalid_credentials": "Epic sadface: Username and password do not match any user in this service",
                   "locked_user": "Epic sadface: Sorry, this user has been locked out.",

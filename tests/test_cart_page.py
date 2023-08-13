@@ -3,8 +3,8 @@ from pages.product_page import ProductPage
 from pages.products_page import ProductsPage
 
 
-def test_open_cart(driver, logged_in, with_open_cart):
-    result = with_open_cart.get_page_title_text()
+def test_open_cart(driver, with_product_in_cart):
+    result = with_product_in_cart.get_page_title_text()
 
     assert result in "Your Cart"
 
@@ -12,8 +12,7 @@ def test_open_cart(driver, logged_in, with_open_cart):
 def test_return_to_products_from_cart(driver, logged_in):
     cart = Cart(driver)
     cart.click_on_cart_icon()
-    cart.click_on_contiue_shopping_button()
-
+    cart.click_on_continue_shopping_button()
     result = cart.get_page_title_text()
 
     assert result in "Products"
@@ -56,7 +55,7 @@ def test_adding_product_to_cart_from_product_page(driver, logged_in):
     assert product_price_in_cart == product_page_price
 
 
-def test_open_product_from_cart(driver, logged_in, with_product_in_cart):
+def test_open_product_from_cart(driver, with_product_in_cart):
     product_title_in_cart = with_product_in_cart.get_current_product_title_in_cart(0).text
     product_desc_in_cart = with_product_in_cart.get_current_desc_in_cart(0)
     product_price_in_cart = with_product_in_cart.get_current_price_in_cart(0)
@@ -72,7 +71,7 @@ def test_open_product_from_cart(driver, logged_in, with_product_in_cart):
     assert product_price_in_cart == product_page_price
 
 
-def test_remove_product_from_cart(driver, logged_in, with_product_in_cart):
+def test_remove_product_from_cart(driver, with_product_in_cart):
     products = with_product_in_cart.get_all_products_in_cart()
     with_product_in_cart.click_on_remove_button_in_cart(0)
     products_after_click = with_product_in_cart.get_all_products_in_cart()

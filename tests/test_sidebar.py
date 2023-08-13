@@ -5,14 +5,14 @@ from pages.products_page import ProductsPage
 from pages.sidebar import Sidebar
 
 
-def test_open_sidebar(driver, logged_in, with_open_sidebar):
+def test_open_sidebar(driver, with_open_sidebar):
     sidebar = Sidebar(driver)
     result = sidebar.is_sidebar_displayed()
 
     assert result == "false"
 
 
-def test_close_sidebar_by_x_button(driver, logged_in, with_open_sidebar):
+def test_close_sidebar_by_x_button(driver, with_open_sidebar):
     sidebar = Sidebar(driver)
     sidebar.click_on_x_button()
     result = sidebar.is_sidebar_displayed()
@@ -20,7 +20,7 @@ def test_close_sidebar_by_x_button(driver, logged_in, with_open_sidebar):
     assert result == "true"
 
 
-def test_close_sidebar_by_escape_key(driver, logged_in, with_open_sidebar):
+def test_close_sidebar_by_escape_key(driver, with_open_sidebar):
     sidebar = Sidebar(driver)
     sidebar.close_sidebar_by_esc()
     result = sidebar.is_sidebar_displayed()
@@ -52,15 +52,15 @@ def test_all_items_from_cart_page(driver, logged_in):
     assert result in "Products"
 
 
-def test_about(driver, logged_in, with_open_sidebar):
+def test_about(driver, with_open_sidebar):
     sidebar = Sidebar(driver)
     sidebar.click_on_about()
     meta_title = sidebar.get_page_meta_title()
 
-    assert "Sauce Labs: Cross Browser Testing, Selenium Testing & Mobile Testing" in meta_title
+    assert meta_title in "Sauce Labs: Cross Browser Testing, Selenium Testing & Mobile Testing"
 
 
-def test_logout(driver, logged_in, with_open_sidebar):
+def test_logout(driver, with_open_sidebar):
     sidebar = Sidebar(driver)
     login_page = LoginPage(driver)
     sidebar.click_on_logout()
@@ -68,7 +68,7 @@ def test_logout(driver, logged_in, with_open_sidebar):
     assert login_page.is_login_button_visible()
 
 
-def test_saving_products_in_cart_after_logout(driver, logged_in, with_product_in_cart):
+def test_saving_products_in_cart_after_logout(driver, with_product_in_cart):
     sidebar = Sidebar(driver)
     sidebar.click_on_burger_menu()
     sidebar.click_on_logout()
@@ -112,7 +112,7 @@ def test_reset_app_state_on_product_page(driver, logged_in):
     assert text_button != text_button_after_reset, "Products are not removed from cart"
 
 
-def test_reset_app_state_on_cart(driver, logged_in, with_product_in_cart):
+def test_reset_app_state_on_cart(driver, with_product_in_cart):
     products = with_product_in_cart.get_all_products_in_cart()
 
     sidebar = Sidebar(driver)

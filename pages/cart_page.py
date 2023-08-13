@@ -24,7 +24,7 @@ class Cart(BasePage):
         self.find(self.CART_ICON).click()
 
 
-    def click_on_contiue_shopping_button(self):
+    def click_on_continue_shopping_button(self):
         self.find(self.CONTINUE_SHOPPING_BUTTON).click()
 
 
